@@ -11,11 +11,11 @@ Next, write a function called countChar that behaves like countBs,
 except it takes a second argument that indicates the character that is to be counted (rather than counting only uppercase “B” characters). 
 Rewrite countBs to make use of this new function. */
 
-const countBs = (string) => {
-  const str = string.includes("B");
-  if (str) {
+const countBs = (str: string): number | string => {
+  const hasB = str.includes("B");
+  if (hasB) {
     //counting the Bs
-    return string.split("B").length - 1;
+    return str.split("B").length - 1;
   } else {
     return `There's no Bs in the string passed`;
   }
@@ -23,10 +23,10 @@ const countBs = (string) => {
 
 console.log(countBs("BBC"));
 
-const countChar = (string, char) => {
-  const str = string.includes(char);
-  if (str) {
-    return string.split(char).length - 1;
+const countChar = (str: string, char: string): number | string => {
+  const hasChar = str.includes(char);
+  if (hasChar) {
+    return str.split(char).length - 1;
   } else {
     return "This char doesn't exist in the string passed";
   }
@@ -34,8 +34,8 @@ const countChar = (string, char) => {
 
 console.log(countChar("kakkerlak", "k"));
 
-const UpdatedCountBs = (string) => {
-  return countChar(string, "B");
+const UpdatedCountBs = (str: string): number | string => {
+  return countChar(str, "B");
 };
 
 console.log(UpdatedCountBs("Bulbasaur"));
