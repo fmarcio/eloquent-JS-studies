@@ -39,3 +39,32 @@ const UpdatedCountBs = (str: string): number | string => {
 };
 
 console.log(UpdatedCountBs("Bulbasaur"));
+
+//count Bs using matchAll()
+const regex: RegExp = /b/gi;
+
+const countBsMatchAll = (str: string): number => {
+  let count = 0;
+  const hasB = str.matchAll(regex);
+
+  for (let b of hasB) {
+    count++;
+  }
+
+  return count;
+};
+
+console.log(countBsMatchAll("Bubbaloo"));
+
+//count char through iteration
+const countOverIterations = (str: string, char: string): number => {
+  let count = 0;
+
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === char) count++;
+  }
+
+  return count;
+};
+
+console.log(countOverIterations("baloon", "o"));
