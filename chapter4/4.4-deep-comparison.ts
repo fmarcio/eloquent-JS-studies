@@ -17,7 +17,7 @@ let obj = {
 };
 
 //hey guys, I wasn't able to figure out a solution using recursion as the question asked. So I did a simpler approach.
-const deepEqual = (firstParam, secondParam) => {
+const deepEqual = (firstParam: Object, secondParam: Object): boolean => {
   if (firstParam === secondParam) return true;
   if (typeof firstParam !== "object" || firstParam === null) return false;
   if (typeof secondParam !== "object" || secondParam === null) return false;

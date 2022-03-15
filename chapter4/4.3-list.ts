@@ -26,32 +26,51 @@
 
 // If you haven’t already, also write a recursive version of nth.
 
-const arrayToList = (array) => {
-  let list = null;
+const arrayToList = (array: Array<number>): Array<number> => {
+  let list;
   for (let i = array.length - 1; i >= 0; i--) {
     list = { value: array[i], rest: list };
   }
   return list;
 };
 
-const listToArray = (arr) => {
-  let list = null;
+// I am setting "any" to List because when I tried "number", "string" or "boolean" VS Code highlighted some errors on node properties
+type List = any;
+
+const listToArray = (list: List): Array<number> => {
+  let arr = [];
   for (let node = list; node; node = node.rest) {
-    arr.push(node);
+    arr.push(node.value);
   }
-  return list;
+  return arr;
 };
 
-const prepend = (element, list) => {
+const prepend = (element: number, list: List) => {
   return { value: element, rest: list };
 };
 
-const nth = (num, list) => {
-  if (!list) {
-    return undefined;
-  } else if (num === 0) {
+let listTest = {
+  value: 1,
+  rest: {
+    value: 2,
+    rest: {
+      value: 3,
+      rest: null,
+    },
+  },
+};
+
+const nth = (list: List, num: number): number => {
+  if (!list) return;
+  else if (num === 0) {
     return list.value;
   } else {
-    return nth(num - 1);
+    return nth(list.rest, num - 1);
   }
 };
+
+const nthUsingIteration = (list: List, num: number): number => {
+  return listToArray(list)[num];
+};
+
+console.log(nthUsingIteration(listTest, 0));

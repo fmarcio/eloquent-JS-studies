@@ -5,24 +5,24 @@
 // a new array that has the same elements in the inverse order. The second, reverseArrayInPlace, does what the reverse method does: it modifies the array given
 // as argument by reversing its elements. Neither may use the standard reverse method.
 
-const reverseArray = (array) => {
+const reverseArray = (array: number[]): number[] => {
   let newArray = [];
-  for (item of array) {
-    newArray.unshift(item);
-  }
+  array.forEach((item) => newArray.unshift(item));
   return newArray;
 };
 
 console.log(reverseArray([1, 2, 3, 4, 5]));
 
-const reverseArrayInPlace = (arr) => {
-  const halfLength = Math.floor(arr.length / 2);
+const reverseArrayInPlace = (arr: number[] | string[]): number[] | string[] => {
+  const arrLength = arr.length;
+  const halfLength = Math.floor(arrLength / 2);
+
   for (let i = 0; i < halfLength; i++) {
     let item = arr[i];
     //swapping the items positions
-    arr[i] = arr[arr.length - 1 - i];
-    arr[arr.length - 1 - i] = arr[i];
-    arr[arr.length - 1 - i] = item;
+    arr[i] = arr[arrLength - 1 - i];
+    arr[arrLength - 1 - i] = arr[i];
+    arr[arrLength - 1 - i] = item;
   }
 
   return arr;
